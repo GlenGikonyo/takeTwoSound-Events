@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gallery Admin Panel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f8f9fa;
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    form {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    input[type="file"], input[type="text"], select {
+      margin: 5px;
+      padding: 6px;
+    }
+
+    button {
+      padding: 6px 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    li {
+      margin: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background-color: white;
+      border-radius: 8px;
+      width: 250px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 4px;
+    }
+
+    .info {
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Admin: Manage Gallery</h1>
+
+  <form action="/upload" method="POST" enctype="multipart/form-data">
+    <input type="file" name="galleryImage" required />
+    <input type="text" name="title" placeholder="Title" required />
+    <select name="category" required>
+      <option value="filter-app">Wedding</option>
+      <option value="filter-card">Corporate</option>
+      <option value="filter-web">Family</option>
+    </select>
+    <button type="submit">Upload</button>
+  </form>
+
+  <h2>Current Images</h2>
+  <ul>
+    <% gallery.forEach(item => { %>
+      <li>
+        <img src="/img/<%= item.filename %>" alt="<%= item.title %>" />
+        <div class="info">
+          <strong><%= item.title %></strong><br/>
+          <em><%= item.category %></em>
+        </div>
+
+        <div class="actions">
+          <!-- Replace image -->
+          <form action="/replace" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="oldFilename" value="<%= item.filename %>">
+            <input type="file" name="newImage" required />
+            <button type="submit">Replace</button>
+          </form>
+
+          <!-- Delete image -->
+          <form action="/delete" method="POST">
+            <input type="hidden" name="filename" value="<%= item.filename %>">
+            <button type="submit" style="background-color: #dc3545;">Delete</button>
+          </form>
+        </div>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>
