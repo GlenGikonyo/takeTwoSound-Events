@@ -40,6 +40,29 @@ app.get("/admin", (req, res) => {
   res.render("admin", { gallery }); // ✅ Pass gallery to EJS template
 });
 
+// home route
+app.get("/", (req, res) => {
+  const gallery = JSON.parse(fs.readFileSync("./gallery.json"));
+  res.render("index", { gallery });
+});
+
+// Booking Route
+app.get("/booking", (req, res) => {
+  res.render("booking");
+});
+// PA Route
+app.get("/pa", (req, res) => {
+  res.render("PA");
+});
+// DJ Route
+app.get("/dj", (req, res) => {
+  res.render("DJ");
+});
+// MCEE Route
+app.get("/mcee", (req, res) => {
+  res.render("MCEE");
+});
+
 // Upload Route
 app.post("/upload", upload.single("galleryImage"), (req, res) => {
   const { title, category } = req.body;
@@ -77,11 +100,6 @@ app.post("/replace", upload.single("newImage"), (req, res) => {
   res.redirect("/admin");
 });
 
-// home route
-app.get("/", (req, res) => {
-  const gallery = JSON.parse(fs.readFileSync("./gallery.json"));
-  res.render("index", { gallery });
-});
 
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}/admin`);

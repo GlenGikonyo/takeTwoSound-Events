@@ -21,7 +21,7 @@ const bookingSendMail = () => {
                 document.getElementById("name").value = "";
                 document.getElementById("email").value = "";
                 document.getElementById("phone_number").value = "";
-                selectedOptionElement.value = ""; // Clear the select field
+                selectedOptionElement.value = ""; 
                 document.getElementById("date").value = "";
                 document.getElementById("message").value = "";
 

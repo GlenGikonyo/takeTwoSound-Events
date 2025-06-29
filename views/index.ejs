@@ -32,32 +32,16 @@
 
     <!-- Vendor CSS Files -->
     <link href="/vendor/aos/aos.css" rel="stylesheet" />
-    <link
-      href="/vendor/bootstrap/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="/vendor/bootstrap-icons/bootstrap-icons.css"
-      rel="stylesheet"
-    />
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
     <link href="/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
-    <link
-      href="/vendor/glightbox/css/glightbox.min.css"
-      rel="stylesheet"
-    />
+    <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
     <link href="/vendor/remixicon/remixicon.css" rel="stylesheet" />
     <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
     <!-- Template Main CSS File -->
     <link href="/css/style.css" rel="stylesheet" />
-
-    <!-- =======================================================
-  * Template Name: Gp
-  * Updated: Aug 30 2023 with Bootstrap v5.3.1
-  * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <!-- EmailJS -->
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
@@ -71,34 +55,7 @@
 
   <body>
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top">
-      <div
-        class="container d-flex align-items-center justify-content-lg-between"
-      >
-        <!-- <h1 class="logo me-auto me-lg-0"><a href="index.html"><img src="assets/img/logo.png" alt=""><span>.</span></a></h1> -->
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="index.html" class="logo me-auto me-lg-0"
-          ><img src="/img/logo.png" alt="" class="img-fluid"
-        /></a>
-
-        <nav id="navbar" class="navbar order-last order-lg-0">
-          <ul>
-            <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-            <li><a class="nav-link scrollto" href="#about">About</a></li>
-            <li><a class="nav-link scrollto" href="#services">Services</a></li>
-            <li><a class="nav-link scrollto" href="#portfolio">Gallery</a></li>
-            <li><a class="nav-link scrollto" href="#team">Team</a></li>
-            <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          </ul>
-          <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav>
-        <!-- .navbar -->
-
-        <a href="booking.html" class="get-started-btn scrollto fw-bold"
-          >BOOK US TODAY</a
-        >
-      </div>
-    </header>
+    <%- include('partials/header') %>
     <!-- End Header -->
 
     <!-- ======= Hero Section ======= -->
@@ -120,23 +77,23 @@
           data-aos="zoom-in"
           data-aos-delay="250"
         >
-          <div class="col-xl-2 col-md-4">
+          <a href="/pa" class="col-xl-2 col-md-4">
             <div class="icon-box">
               <i class="bi bi-megaphone"></i>
-              <h3><a href="PA.html">PA system for hire</a></h3>
+              <h3 style="color: #fff;">PA system for hire</h3>
             </div>
-          </div>
-          <div class="col-xl-2 col-md-4">
+          </a>
+          <a href="/dj" class="col-xl-2 col-md-4">
             <div class="icon-box">
               <i class="bi bi-headset"></i>
-              <h3><a href="DJ.html">DJs for hire</a></h3>
+              <h3 style="color: #fff;">DJs for hire</h3>
             </div>
-          </div>
-          <div class="col-xl-2 col-md-4">
-            <div class="icon-box">
-              <i class="bi bi-mic"></i>
-              <h3><a href="MCEE.html">MCEE for hire</a></h3>
-            </div>
+            <a href="/mcee" class="col-xl-2 col-md-4">
+              <div class="icon-box">
+                <i class="bi bi-mic"></i>
+                <h3 style="color: #fff;">MCs for hire</h3>
+              </div>
+            </a>
           </div>
         </div>
       </div>
@@ -153,11 +110,7 @@
               data-aos="fade-left"
               data-aos-delay="100"
             >
-              <img
-                src="/img/about2.jpg"
-                class="img-fluid rounded"
-                alt=""
-              />
+              <img src="/img/about2.jpg" class="img-fluid rounded" alt="" />
             </div>
             <div
               class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content"
@@ -251,50 +204,53 @@
           </div>
 
           <div class="row">
-            <div
+            <a
+              href="/pa"
               class="col-lg-4 col-md-6 d-flex align-items-stretch"
               data-aos="zoom-in"
               data-aos-delay="100"
             >
               <div class="icon-box">
                 <div class="icon"><i class="bx bx-speaker"></i></div>
-                <h4><a href="PA.html">PA System for hire</a></h4>
+                <h4>PA System for hire</h4>
                 <p>
                   We address quality sounds with quality sound systems. Public
                   Address (PA) FOR ALL EVENTS
                 </p>
               </div>
-            </div>
+            </a>
 
-            <div
+            <a
+              href="/dj"
               class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0"
               data-aos="zoom-in"
               data-aos-delay="200"
             >
               <div class="icon-box">
                 <div class="icon"><i class="bx bx-headphone"></i></div>
-                <h4><a href="DJ.html">DJs for hire</a></h4>
+                <h4>DJs for hire</h4>
                 <p>
                   We deliver outstanding event entertainment with warmth, humour
                   and professionalism details.
                 </p>
               </div>
-            </div>
+            </a>
 
-            <div
+            <a
+              href="/mcee"
               class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0"
               data-aos="zoom-in"
               data-aos-delay="300"
             >
               <div class="icon-box">
                 <div class="icon"><i class="bx bx-microphone"></i></div>
-                <h4>MCEE for hire</h4>
+                <h4>MCs for hire</h4>
                 <p>
                   We have an extremely talented MCEE who can get up on stage and
                   guide your event from start to finish.
                 </p>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </section>
@@ -307,7 +263,7 @@
             <h2>Gallery</h2>
             <p>Gallery of our work</p>
           </div>
-      
+
           <div class="row" data-aos="fade-up" data-aos-delay="100">
             <div class="col-lg-12 d-flex justify-content-center">
               <ul id="portfolio-flters">
@@ -318,27 +274,36 @@
               </ul>
             </div>
           </div>
-      
-          <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+          <div
+            class="row portfolio-container"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
             <% gallery.forEach(item => { %>
-              <div class="col-lg-4 col-md-6 portfolio-item <%= item.category %>">
-                <div class="portfolio-wrap rounded">
-                  <img src="/img/<%= item.filename %>" class="img-fluid" alt="" />
-                  <div class="portfolio-info">
-                    <h4><%= item.title %></h4>
-                    <div class="portfolio-links">
-                      <a href="/img/<%= item.filename %>" data-gallery="portfolioGallery" class="portfolio-lightbox" title="<%= item.title %>">
-                        <i class="bx bx-plus"></i>
-                      </a>
-                    </div>
+            <div class="col-lg-4 col-md-6 portfolio-item <%= item.category %>">
+              <div class="portfolio-wrap rounded">
+                <img src="/img/<%= item.filename %>" class="img-fluid" alt="" />
+                <div class="portfolio-info">
+                  <h4><%= item.title %></h4>
+                  <div class="portfolio-links">
+                    <a
+                      href="/img/<%= item.filename %>"
+                      data-gallery="portfolioGallery"
+                      class="portfolio-lightbox"
+                      title="<%= item.title %>"
+                    >
+                      <i class="bx bx-plus"></i>
+                    </a>
                   </div>
                 </div>
               </div>
+            </div>
             <% }) %>
           </div>
         </div>
       </section>
-      
+
       <!-- End Portfolio Section -->
       <!-- ======= Team Section ======= -->
       <section id="team" class="team">
@@ -480,11 +445,7 @@
             <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
               <div class="member" data-aos="fade-up" data-aos-delay="400">
                 <div class="member-img">
-                  <img
-                    src="/img/cropped_image.png"
-                    class="card-img"
-                    alt=""
-                  />
+                  <img src="/img/cropped_image.png" class="card-img" alt="" />
                   <div class="social">
                     <a
                       href="https://twitter.com/GikonyoGlen"
@@ -581,54 +542,30 @@
                 />
               </div>
               <div class="swiper-slide">
-                <img
-                  src="/img/clients/rubis.webp"
-                  class="img-fluid"
-                  alt=""
-                />
+                <img src="/img/clients/rubis.webp" class="img-fluid" alt="" />
               </div>
               <div class="swiper-slide">
-                <img
-                  src="/img/clients/psc.png"
-                  class="img-fluid"
-                  alt=""
-                />
+                <img src="/img/clients/psc.png" class="img-fluid" alt="" />
               </div>
               <div class="swiper-slide">
                 <img
                   src="/img/clients/wck.png"
                   class="img-fluid"
                   alt=""
-                  style="max-width: 100%;"
+                  style="max-width: 100%"
                 />
               </div>
               <div class="swiper-slide">
-                <img
-                  src="/img/clients/client-5.png"
-                  class="img-fluid"
-                  alt=""
-                />
+                <img src="/img/clients/client-5.png" class="img-fluid" alt="" />
               </div>
               <div class="swiper-slide">
-                <img
-                  src="/img/clients/client-6.png"
-                  class="img-fluid"
-                  alt=""
-                />
+                <img src="/img/clients/client-6.png" class="img-fluid" alt="" />
               </div>
               <div class="swiper-slide">
-                <img
-                  src="/img/clients/client-7.png"
-                  class="img-fluid"
-                  alt=""
-                />
+                <img src="/img/clients/client-7.png" class="img-fluid" alt="" />
               </div>
               <div class="swiper-slide">
-                <img
-                  src="/img/clients/client-8.png"
-                  class="img-fluid"
-                  alt=""
-                />
+                <img src="/img/clients/client-8.png" class="img-fluid" alt="" />
               </div>
             </div>
             <div class="swiper-pagination"></div>
@@ -640,113 +577,7 @@
     <!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    <footer id="footer">
-      <div class="footer-top">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-3 col-md-6">
-              <div class="footer-info">
-                <a href="index.html" class="logo me-auto me-lg-5"
-                  ><img
-                    src="/img/logo.png"
-                    alt=""
-                    class="img-fluid"
-                    width="200"
-                    height="200"
-                /></a>
-                <p>
-                  QWCJ+MWR, Deliverance Rd, Nairobi <br />
-                  <br /><br />
-                  <strong>Phone:</strong> +254 726555054<br />
-                  <strong>Email:</strong> info@ttsound-events.co.ke<br />
-                </p>
-              </div>
-            </div>
-
-            <div class="col-lg-2 col-md-6 footer-links">
-              <h4>Useful Links</h4>
-              <ul>
-                <li>
-                  <i class="bx bx-chevron-right"></i> <a href="#hero">Home</a>
-                </li>
-                <li>
-                  <i class="bx bx-chevron-right"></i>
-                  <a href="#about">About us</a>
-                </li>
-                <li>
-                  <i class="bx bx-chevron-right"></i>
-                  <a href="#services">Services</a>
-                </li>
-                <li>
-                  <i class="bx bx-chevron-right"></i>
-                  <a href="#gallery">Gallery</a>
-                </li>
-                <li>
-                  <i class="bx bx-chevron-right"></i> <a href="#team">Team</a>
-                </li>
-                <li>
-                  <i class="bx bx-chevron-right"></i>
-                  <a href="#contact">Contact</a>
-                </li>
-              </ul>
-            </div>
-
-            <div class="col-lg-3 col-md-6 footer-links">
-              <h4>Our Services</h4>
-              <ul>
-                <li>
-                  <i class="bx bx-chevron-right"></i>
-                  <a href="MCEE.html">MCEE</a>
-                </li>
-                <li>
-                  <i class="bx bx-chevron-right"></i>
-                  <a href="PA.html">PA(Public Address) system</a>
-                </li>
-                <li>
-                  <i class="bx bx-chevron-right"></i>
-                  <a href="DJ.html">DJING</a>
-                </li>
-              </ul>
-            </div>
-
-            <div class="col-lg-4 col-md-6 footer-newsletter">
-              <h4>OUR SOCIALS</h4>
-              <div class="social-links mt-3">
-                <a
-                  href="https://www.facebook.com/Take2Sound"
-                  class="facebook"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  ><i class="bx bxl-facebook"></i
-                ></a>
-                <a
-                  href="https://www.instagram.com/take2soundke/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="instagram"
-                  ><i class="bx bxl-instagram"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="copyright">
-          &copy; Copyright <strong><span>TAKE TWO SOUNDS & EVENTS</span></strong
-          >. All Rights Reserved
-        </div>
-        <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/ -->
-          Designed by
-          <a href="https://shorturl.at/qrGIN">PlainWave Technologies</a>
-        </div>
-      </div>
-    </footer>
+    <%- include('partials/footer') %>
     <!-- End Footer -->
 
     <div id="preloader"></div>
