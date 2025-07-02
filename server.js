@@ -1,10 +1,16 @@
+require("dotenv").config();
 const express = require("express");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
+const jwt = require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
+
+const JWT_SECRET = process.env.JWT_SECRET; // Load JWT secret from .env
+const PORT = process.env.PORT || 3000; // Load port from .env or default to 3000
+const { adminUsername, adminPassword } = process.env; // Load admin credentials from .env
 
 const app = express();
-const PORT = 3000;
 
 // Use EJS for the admin panel
 app.set("view engine", "ejs");
@@ -12,6 +18,7 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser()); // Add this line to parse cookies
 
 // File upload settings
 const storage = multer.diskStorage({
@@ -22,10 +29,49 @@ const storage = multer.diskStorage({
     cb(null, Date.now() + "-" + file.originalname);
   },
 });
+
 const upload = multer({ storage });
 
+// Middleware to authenticate JWT and redirect to login if unauthorized
+const authenticateJWT = (req, res, next) => {
+  const authHeader = req.headers.authorization || req.cookies.token;
+
+  if (authHeader) {
+    const token = authHeader.split(" ")[1] || authHeader; // Extract token from "Bearer <token>" or cookie
+
+    jwt.verify(token, JWT_SECRET, (err, user) => {
+      if (err) {
+        return res.redirect("/login"); // Redirect to login if token is invalid
+      }
+      req.user = user; // Attach user info to the request object
+      next(); // Proceed to the next middleware or route handler
+    });
+  } else {
+    res.redirect("/login"); // Redirect to login if no token is provided
+  }
+};
+
+app.get("/login", (req, res) => {
+  res.render("login", { error: null }); // Pass 'error' as null initially
+});
+
+app.post("/login", (req, res) => {
+  const { username, password } = req.body;
+
+  if (username === adminUsername && password === adminPassword) {
+    // Generate a JWT token
+    const token = jwt.sign({ username }, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
+    res.cookie("token", token, { httpOnly: true }); // Store token in a cookie
+    res.redirect("/admin"); // Redirect to the admin page
+  } else {
+    res.render("login", { error: "Invalid credentials" }); // Pass error message to the template
+  }
+});
+
 // Admin Panel
-app.get("/admin", (req, res) => {
+app.get("/admin", authenticateJWT, (req, res) => {
   const galleryFile = path.join(__dirname, "gallery.json");
   let gallery = [];
 
@@ -37,7 +83,7 @@ app.get("/admin", (req, res) => {
     }
   }
 
-  res.render("admin", { gallery }); // ✅ Pass gallery to EJS template
+  res.render("admin", { gallery }); // Pass gallery to EJS template
 });
 
 // home route
@@ -99,7 +145,6 @@ app.post("/replace", upload.single("newImage"), (req, res) => {
 
   res.redirect("/admin");
 });
-
 
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}/admin`);
